@@ -1,0 +1,3 @@
+mov eax, [ebx+ecx*4]
+
+This line of assembly code attempts to access memory at the address calculated by `ebx + ecx * 4`.  The bug arises if `ecx` is an unexpectedly large value. If `ecx` is so large that the product `ecx * 4` results in an integer overflow, the resulting address will be incorrect and can lead to accessing memory outside of the allocated space, causing a segmentation fault or other unpredictable behavior.  This is particularly insidious because it won't always crash the program; the results will depend on what memory happens to be in that incorrect location.
